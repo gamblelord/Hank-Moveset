@@ -18,7 +18,7 @@ local ultbarclr:Frame = ultbar:FindFirstChild("Health").Bar.Bar
 local ulttext:TextButton = ultbar:FindFirstChild("TextLabel")
 
 -- Awakening text & color
-ulttext.Text = "PERFECTED BLOODLUST"
+ulttext.Text = "HOMIXIDE"
 ultbarclr.BackgroundColor3 = Color3.fromRGB(175, 0, 255) -- In RGB values (red, green, blue)
 
 local hotbar:ScreenGui = plrgui:FindFirstChild("Hotbar")
@@ -32,7 +32,7 @@ local b1, b2, b3, b4 = bb1["ToolName"], bb2["ToolName"], bb3["ToolName"], bb4["T
 local function SetMoveNames()
     b1.Text = "Blam"
     b2.Text = "Purge"
-    b3.Text = "Back- Nevermind"
+    b3.Text = "N0 ESC@P£"
     b4.Text = "Sign"
 end
 SetMoveNames()
@@ -72,10 +72,10 @@ local oldAnimations = {
 
 -- New Animations (Animations that will replace the old ones)
 local newAnimations = {
-    m1 = "18716149223", -- Replace with your new m1 animation ID
-    m2 = "18169291044", -- Replace with your new m2 animation ID
+    m1 = "15259161390", -- Replace with your new m1 animation ID
+    m2 = "18716641152", -- Replace with your new m2 animation ID
     m3 = "18715736372", -- Replace with your new m3 animation ID
-    m4 = "18716647575", -- Replace with your new m4 animation ID
+    m4 = "12463072679", -- Replace with your new m4 animation ID
     ds = "18716650993", -- Replace with your new downslam animation ID
     up = "18179181663", -- Replace with your new mini uppercut animation ID
     wc = "18716485513", -- Replace with your new wall combo animation ID
@@ -151,7 +151,7 @@ local handlers = {
     awk = function(tr)
         chat("WHY?")
         task.wait(1)
-        chat("YOU WANT KILL ME? HANK?")
+        chat("YOU WANT TO KILL ME? THE HANK?")
         task.wait(1)
         chat("HANK NO DIE.")
     end,
@@ -233,7 +233,6 @@ local handlers = {
     end,
 
     move4 = function(tr)
-    chat("ARISE!")
     end,
 
     amove1 = function(tr)
