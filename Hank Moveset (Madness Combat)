@@ -1,3 +1,4 @@
+
 local lplr = game.Players.LocalPlayer
 local char = lplr.Character or lplr.CharacterAdded:Wait()
 
@@ -29,19 +30,19 @@ local b1, b2, b3, b4 = bb1["ToolName"], bb2["ToolName"], bb3["ToolName"], bb4["T
 
 -- Move names
 local function SetMoveNames()
-    b1.Text = "SLICING EXORCISM!"
-    b2.Text = "Bloody Crash"
-    b3.Text = "Continous Clash"
-    b4.Text = "Blood Rise"
+    b1.Text = "Blam"
+    b2.Text = "Purge"
+    b3.Text = "Back- Nevermind"
+    b4.Text = "Sign"
 end
 SetMoveNames()
 
 -- Awakening move names
 local function SetAwkNames()
-    b1.Text = "Piercing Parry"
-    b2.Text = "Ripping Uprise"
-    b3.Text = "ALL YOUR ENERGY!"
-    b4.Text = "ORBITAL NEGATIVES"
+    b1.Text = "Forgetful"
+    b2.Text = "Fire."
+    b3.Text = "YOU DIE"
+    b4.Text = "EXPURGATE"
 end
 
 -- Animations
@@ -71,26 +72,26 @@ local oldAnimations = {
 
 -- New Animations (Animations that will replace the old ones)
 local newAnimations = {
-    m1 = "18716133404", -- Replace with your new m1 animation ID
-    m2 = "18716143973", -- Replace with your new m2 animation ID
-    m3 = "17889471098", -- Replace with your new m3 animation ID
-    m4 = "17889290569", -- Replace with your new m4 animation ID
-    ds = "10470104242", -- Replace with your new downslam animation ID
-    up = "10503381238", -- Replace with your new mini uppercut animation ID
-    wc = "76530443909428", -- Replace with your new wall combo animation ID
+    m1 = "18716149223", -- Replace with your new m1 animation ID
+    m2 = "18169291044", -- Replace with your new m2 animation ID
+    m3 = "18715736372", -- Replace with your new m3 animation ID
+    m4 = "18716647575", -- Replace with your new m4 animation ID
+    ds = "18716650993", -- Replace with your new downslam animation ID
+    up = "18179181663", -- Replace with your new mini uppercut animation ID
+    wc = "18716485513", -- Replace with your new wall combo animation ID
     fdash = "15676072469", -- Replace with your new front dash animation ID
     bdash = "13801083337", -- Replace with your new back dash animation ID
     ldash = "18715789130", -- Replace with your new left dash animation ID
     rdash = "18715789130", -- Replace with your new right dash animation ID
-    awk = "76530443909428", -- Replace with your new awakening animation ID
-    move1 = "12509505723", -- Replace with your new move 1 animation ID
-    move2 = "13560306510", -- Replace with your new move 2 animation ID
-    move3 = "12832505612", -- Replace with your new move 3 animation ID
-    move4 = "18179181663", -- Replace with your new move 4 animation ID
-    amove1 = "18440406788", -- Replace with your new move awakening 1 animation ID
-    amove2 = "94020267622363", -- Replace with your new move awakening 2 animation ID
-    amove3 = "17097146599", -- Replace with your new move awakening 3 animation ID
-    amove4 = "18464362124", -- Replace with your new move awakening 4 animation ID
+    awk = "17106365733", -- Replace with your new awakening animation ID
+    move1 = "16746824621", -- Replace with your new move 1 animation ID
+    move2 = "18716581594", -- Replace with your new move 2 animation ID
+    move3 = "18715777712", -- Replace with your new move 3 animation ID
+    move4 = "13294790250", -- Replace with your new move 4 animation ID
+    amove1 = "18715770173", -- Replace with your new move awakening 1 animation ID
+    amove2 = "133306251262378", -- Replace with your new move awakening 2 animation ID
+    amove3 = "14920779925", -- Replace with your new move awakening 3 animation ID
+    amove4 = "18897115785", -- Replace with your new move awakening 4 animation ID
 }
 
 -- Code/functions to use in the handlers
@@ -148,11 +149,11 @@ local handlers = {
     rdash = function() end,
 
     awk = function(tr)
-        chat("Your pretty fast for a non-sorcerer.")
+        chat("WHY?")
         task.wait(1)
-        chat("I GUESS I NEED TO UP THE PACE MYSELF!")
+        chat("YOU WANT KILL ME? HANK?")
         task.wait(1)
-        chat("MY BLOODLUST ISNT FUFILLED YET, WHY DONT WE FIX THAT HMM?")
+        chat("HANK NO DIE.")
     end,
 
     move1 = function(tr)
@@ -178,7 +179,7 @@ local handlers = {
         blood.CanCollide = false
         blood.Anchored = true
 
-        blood.Color = Color3.fromRGB(96, 0, 0)
+        blood.Color = Color3.fromRGB(252, 252, 96)
         blood.Material = Enum.Material.Neon
         blood.CastShadow = false
         blood.Parent = workspace
@@ -186,11 +187,11 @@ local handlers = {
             if v:IsA("ParticleEmitter") then
                 local cl = v:Clone()
                 cl.Parent = blood
-                cl:Emit(200)
+                cl:Emit(20)
             end
         end
         game:GetService("Debris"):AddItem(blood, 1)
-    chat("PIERCING BLOOD!")
+    chat("DIE")
     end,
 
     move2 = function(tr:AnimationTrack)
@@ -232,16 +233,15 @@ local handlers = {
     end,
 
     move4 = function(tr)
-        print("choso awk")
     chat("ARISE!")
     end,
 
     amove1 = function(tr)
-        print("choso awk")
+        print("Rampage")
     task.wait(0.5)
-    chat("You filthy detestable human...")
+    chat("You should never have messed with the Madness.")
     task.wait(1)
-    chat("FEEL THE BLOOD DRAIN FROM YOU!")
+    chat("BLAST AWAY MORTAL.")
         playAnimation("17465453123", { Weight = 10, Speed = 1 })
         task.wait(3)
         playAnimation("13083332742", { Weight = 10, Speed = 1 })
@@ -262,7 +262,7 @@ local handlers = {
         print("Rampage")
     chat("Hmph. Simple human.")
     task.wait(3)
-    chat("Dodge this.")
+    chat("Get Blammed.")
     task.wait(3)
       playAnimation("106755459092436", { Weight = 10, Speed = 1 })
     end,
