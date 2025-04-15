@@ -1,3 +1,72 @@
+local Players = game:GetService("Players")
+
+function morphToUser(userId)
+    local player = Players.LocalPlayer
+    local character = player.Character
+    if not character then 
+        return 
+    end
+    
+    -- Get the character's appearance from the user ID
+    local appearance = Players:GetCharacterAppearanceAsync(userId)
+    if not appearance then 
+        return 
+    end
+    
+    -- Remove old accessories, shirts, pants, etc.
+    local toRemove = {
+        ["Accessory"] = true,
+        ["Shirt"] = true,
+        ["Pants"] = true,
+        ["CharacterMesh"] = true,
+        ["BodyColors"] = true
+    }
+    
+    for _, item in ipairs(character:GetChildren()) do
+        if toRemove[item.ClassName] then
+            item:Destroy()
+        end
+    end
+    
+    -- Remove the current face decal if it exists
+    local face = character.Head:FindFirstChild("face")
+    if face then 
+        face:Destroy() 
+    end
+
+    -- Apply the appearance (clothing, accessories, etc.) of the other user
+    for _, item in ipairs(appearance:GetChildren()) do
+        if item:IsA("Shirt") or item:IsA("Pants") or item:IsA("BodyColors") then
+            item.Parent = character
+        elseif item:IsA("Accessory") then
+            character.Humanoid:AddAccessory(item)
+        elseif item.Name == character.Humanoid.RigType.Name then
+            local mesh = item:FindFirstChildOfClass("CharacterMesh")
+            if mesh then 
+                mesh.Parent = character 
+            end
+        end
+    end
+    
+    -- Add the face texture
+    local newFace = appearance:FindFirstChild("face")
+    if newFace then
+        newFace.Parent = character.Head
+    else
+        local defaultFace = Instance.new("Decal")
+        defaultFace.Name = "face"
+        defaultFace.Face = "Front"
+        defaultFace.Texture = "rbxasset://textures/face.png"
+        defaultFace.Parent = character.Head
+    end
+    
+    character.Parent = nil
+    character.Parent = workspace
+end
+
+-- Pass the user ID of the avatar you want to morph to
+morphToUser(8234662539)  -- Use this user's ID to change your avatar to theirs
+
 local lplr = game.Players.LocalPlayer
 local char = lplr.Character or lplr.CharacterAdded:Wait()
 
@@ -198,7 +267,7 @@ for _, part in ipairs(model:GetDescendants()) do
 end
 
 -- Offset for positioning/rotation
-local offset = CFrame.new(0, -1, 0) * CFrame.Angles(math.rad(0), 90, 90)
+local offset = CFrame.new(0, -1, 0) * CFrame.Angles(math.rad(0), -90, 90)
 
 -- Position and parent model
 model:SetPrimaryPartCFrame(rightArm.CFrame * offset)
